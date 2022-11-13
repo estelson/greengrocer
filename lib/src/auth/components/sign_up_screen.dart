@@ -10,7 +10,8 @@ class SignUpScreen extends StatelessWidget {
       backgroundColor: CustomColors.customSwatchColor,
       body: Column(
         children: [
-          Expanded(
+          // Título da tela
+          const Expanded(
             child: Center(
               child: Text(
                 "Cadastro",
@@ -18,6 +19,20 @@ class SignUpScreen extends StatelessWidget {
                   color: Colors.white,
                   fontSize: 35,
                 ),
+              ),
+            ),
+          ),
+
+          // Formulário da tela
+          Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 32,
+              vertical: 40,
+            ),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(45),
               ),
             ),
           ),
