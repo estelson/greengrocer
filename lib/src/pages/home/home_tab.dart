@@ -11,14 +11,6 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
-  List<String> categories = [
-    "Frutas",
-    "Grãos",
-    "Verduras",
-    "Temperos",
-    "Cereais",
-  ];
-
   String selectedCategory = "Frutas";
 
   @override
