@@ -17,6 +17,8 @@ class QuantityWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(4),
+
+      // Configuração do card dos produtos
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(50),
@@ -29,13 +31,14 @@ class QuantityWidget extends StatelessWidget {
         ],
       ),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           // Botão -
           _QuantityButton(
             icon: Icons.remove,
             color: Colors.grey,
             onPressed: () {
-              if(value == 1) return; // evitar valores 0 ou negativos
+              if (value == 1) return; // evitar valores 0 ou negativos
 
               int resultCount = value - 1;
               result(resultCount);
