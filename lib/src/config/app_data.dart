@@ -80,4 +80,4 @@ List<CartItemModel> cartItems = [
   CartItemModel(item: guava, quantity: 3),
 ];
 
-UserModel user = UserModel(name: "Estelson", email: "estelson@gmail.com", celular: "(61) 99535-0044", cpf: "842.372.791-20", senha: "");
+UserModel user = UserModel(name: "Estelson", email: "estelson@gmail.com", phone: "(61) 99535-0044", cpf: "842.372.791-20", password: "");
