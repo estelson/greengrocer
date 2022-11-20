@@ -12,7 +12,7 @@ class UtilsServices {
   String formatDateTime(DateTime dateTime) {
     initializeDateFormatting();
 
-    DateFormat dateFormat = DateFormat.yMd("pt_BR").add_Hms();
+    DateFormat dateFormat = DateFormat.yMd("pt_BR").add_Hm();
     return dateFormat.format(dateTime);
   }
 
