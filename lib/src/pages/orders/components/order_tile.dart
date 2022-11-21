@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/models/cart_item_model.dart';
 import 'package:greengrocer/src/models/order_model.dart';
+import 'package:greengrocer/src/pages/orders/components/order_status_widget.dart';
 import 'package:greengrocer/src/services/utils_services.dart';
 
 class OrderTile extends StatelessWidget {
@@ -49,11 +50,12 @@ class OrderTile extends StatelessWidget {
               height: 150,
               child: Row(
                 children: [
-                  // Container esquerdo
+                  // Container esquerdo (lista de produtos do pedido)
                   Expanded(
                     flex: 3,
                     child: ListView(
                       children: order.items.map((orderItem) {
+                        // Componente de listagem de produtos do pedido
                         return _OrderItemWidget(
                           utilsServices: utilsServices,
                           orderItem: orderItem,
@@ -62,11 +64,19 @@ class OrderTile extends StatelessWidget {
                     ),
                   ),
 
-                  // Container direito
+                  // Divisória vertical
+                  VerticalDivider(
+                    color: Colors.grey.shade300,
+                    thickness: 2,
+                    width: 8,
+                  ),
+
+                  // Container direito (status do pedido)
                   Expanded(
                     flex: 2,
-                    child: Container(
-                      color: Colors.blue,
+                    child: OrderStatusWidget(
+                      status: order.status,
+                      isOverdue: order.overdueDateTime.isBefore(DateTime.now()),
                     ),
                   ),
                 ],
@@ -79,6 +89,7 @@ class OrderTile extends StatelessWidget {
   }
 }
 
+// Componente de listagem de produtos do pedido
 class _OrderItemWidget extends StatelessWidget {
   const _OrderItemWidget({
     Key? key,
