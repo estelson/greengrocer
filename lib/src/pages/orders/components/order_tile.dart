@@ -23,6 +23,7 @@ class OrderTile extends StatelessWidget {
       child: Theme(
         data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
         child: ExpansionTile(
+          initiallyExpanded: order.status == "pending_payment",
           title: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,31 +47,33 @@ class OrderTile extends StatelessWidget {
 
           children: [
             // Conteúdo do dialog expandido
-            SizedBox(
-              height: 150,
+            IntrinsicHeight(
               child: Row(
                 children: [
                   // Container esquerdo (lista de produtos do pedido)
                   Expanded(
                     flex: 3,
-                    child: ListView(
-                      children: order.items.map((orderItem) {
-                        // Componente de listagem de produtos do pedido
-                        return _OrderItemWidget(
-                          utilsServices: utilsServices,
-                          orderItem: orderItem,
-                        );
-                      }).toList(),
+                    child: SizedBox(
+                      height: 150,
+                      child: ListView(
+                        children: order.items.map((orderItem) {
+                          // Componente de listagem de produtos do pedido
+                          return _OrderItemWidget(
+                            utilsServices: utilsServices,
+                            orderItem: orderItem,
+                          );
+                        }).toList(),
+                      ),
                     ),
                   ),
-
+            
                   // Divisória vertical
                   VerticalDivider(
                     color: Colors.grey.shade300,
                     thickness: 2,
                     width: 8,
                   ),
-
+            
                   // Container direito (status do pedido)
                   Expanded(
                     flex: 2,
