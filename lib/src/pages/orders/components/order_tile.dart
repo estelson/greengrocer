@@ -120,10 +120,7 @@ class OrderTile extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {},
-                icon: Image.asset(
-                  "assets/app_images/pix.png",
-                  height: 18,
-                ),
+                icon: const Icon(Icons.pix),
                 label: const Text("Ver QRCode PIX"),
               ),
             ),
