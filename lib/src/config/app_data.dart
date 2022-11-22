@@ -107,6 +107,22 @@ List<OrderModel> orders = [
         item: mango,
         quantity: 2,
       ),
+      CartItemModel(
+        item: kiwi,
+        quantity: 2,
+      ),
+      CartItemModel(
+        item: guava,
+        quantity: 2,
+      ),
+      CartItemModel(
+        item: papaya,
+        quantity: 2,
+      ),
+      CartItemModel(
+        item: grape,
+        quantity: 2,
+      ),
     ],
   ),
 

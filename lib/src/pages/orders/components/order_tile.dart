@@ -45,6 +45,8 @@ class OrderTile extends StatelessWidget {
           // Aplicando espaçamento interno ao conteúdo do dialog expandido
           childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
 
+          expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
+
           children: [
             // Conteúdo do dialog expandido
             IntrinsicHeight(
@@ -56,6 +58,7 @@ class OrderTile extends StatelessWidget {
                     child: SizedBox(
                       height: 150,
                       child: ListView(
+                        physics: const BouncingScrollPhysics(),
                         children: order.items.map((orderItem) {
                           // Componente de listagem de produtos do pedido
                           return _OrderItemWidget(
@@ -66,14 +69,14 @@ class OrderTile extends StatelessWidget {
                       ),
                     ),
                   ),
-            
+
                   // Divisória vertical
                   VerticalDivider(
                     color: Colors.grey.shade300,
                     thickness: 2,
                     width: 8,
                   ),
-            
+
                   // Container direito (status do pedido)
                   Expanded(
                     flex: 2,
@@ -83,6 +86,45 @@ class OrderTile extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+            ),
+
+            // Total do pedido
+            Text.rich(
+              TextSpan(
+                style: const TextStyle(
+                  fontSize: 20,
+                ),
+                children: [
+                  const TextSpan(
+                    text: "Total: ",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextSpan(
+                    text: UtilsServices().priceToCurrency(order.total),
+                  ),
+                ],
+              ),
+            ),
+
+            // Botão ver QRCode PIX
+            // Só será visível se o status do pedido for "pending_payment"
+            Visibility(
+              visible: order.status == "pending_payment",
+              child: ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                onPressed: () {},
+                icon: Image.asset(
+                  "assets/app_images/pix.png",
+                  height: 18,
+                ),
+                label: const Text("Ver QRCode PIX"),
               ),
             ),
           ],
